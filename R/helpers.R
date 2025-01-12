@@ -1,4 +1,4 @@
-appdata_subdir <- "InvTraitR"
+appdata_subdir <- "InvAlloR"
 db_dir <- "database"
 
 #' @title get_db_file_path
@@ -82,7 +82,7 @@ download_database <- function(pkgname) {
     )
     remote_db_dir <- "database"
 
-    base_url <- "https://github.com/haganjam/InvTraitR"
+    base_url <- "https://github.com/haganjam/InvAlloR-database"
     db_files <- list(
         "col_higher_taxon_matrices.rds",
         "col_taxon_database.rds",
@@ -94,6 +94,8 @@ download_database <- function(pkgname) {
         "gbif_taxon_database.rds",
         "itis_higher_taxon_matrices.rds",
         "itis_taxon_database.rds",
+        "preservation_correction_database.rds",
+        "reference_database.rds",
         "taxon_database.rds"
     )
 
