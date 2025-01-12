@@ -7,7 +7,7 @@
 	"context": "..",
 	"runArgs": [
 		"--name",
-		"dev_invertr",
+		"dev_invallor",
 		"--init"
 	],
 	"customizations": {
@@ -18,13 +18,15 @@
 		}
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/renv-cache:latest": {}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "R -q -e 'install.packages(\"devtools\")'"
+	"postCreateCommand": ".devcontainer/postcreate.sh"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

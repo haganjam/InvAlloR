@@ -10,9 +10,6 @@ RUN apt update \
         pandoc \
     && :
 
-# install dev dependencies
-RUN R -q -e 'install.packages("renv")'
-
 WORKDIR /invertr
 
 COPY . .
