@@ -426,9 +426,9 @@ select_traits_tax_dist <- function(data,
             } else {
               hab_match <- NA
             }
-          } else {
-            hab_match <- NA
           }
+        } else {
+          hab_match <- NA
         }
 
         return(hab_match)
