@@ -1,9 +1,12 @@
 ---
 title: "Detailed description of the output"
-author: "James G. Hagan"
-date: "`r Sys.Date()`"
-vignette: "%\\VignetteIndexEntry{Detailed description of the output} %\\VignetteEngine{knitr::rmarkdown}
-  %\\VignetteEncoding{UTF-8}\n"
+output: rmarkdown::html_vignette
+description: |
+  Notes on the model forms used in package.
+vignette: >
+  %\VignetteIndexEntry{Detailed description of model output}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}

@@ -1,9 +1,10 @@
 ---
 title: "View database"
-author: "James G. Hagan"
-date: "`r Sys.Date()`"
-vignette: "%\\VignetteIndexEntry{View database} %\\VignetteEngine{knitr::rmarkdown}
-  %\\VignetteEncoding{UTF-8}\n"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview of the database}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -18,8 +19,8 @@ knitr::opts_chunk$set(
 The code below loads the equation database so that users can simply browse the database and examine where the raw data comes from.
 
 ```{r}
-equ_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/equation_database.rds"))
-print(equ_dat)
+#equ_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/equation_database.rds")#)
+#print(equ_dat)
 ```
 
 The metadata for the equation database is:
@@ -81,8 +82,8 @@ The metadata for the equation database is:
 The code below loads the reference database which contains the full citation of the publications from the equations were gathered to generate the database.
 
 ```{r}
-ref_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/reference_database.rds"))
-print(ref_dat)
+#ref_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/reference_database.rds"#))
+#print(ref_dat)
 ```
 
 The metadata for the reference database is:
@@ -108,8 +109,8 @@ The metadata for the reference database is:
 The code below loads the database that holds the biogeographical realm, major habitat type and ecoregion data for each equation in the equation database derived based on the coordinates associated with the equation and Abell et al.'s (2008) freshwater ecoregion map (www.feow.org).
 
 ```{r}
-eco_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/freshwater_ecoregion_data.rds"))
-print(eco_dat)
+#eco_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/freshwater_ecoregion_da#ta.rds"))
+#print(eco_dat)
 ```
 
 The metadata for the geographic/habitat similarity data is:
@@ -144,8 +145,8 @@ We have compiled a database of correction factors and included suggested correct
 The code below loads the preservation correction database so that users can see where the suggested correction factors in the equation database come from.
 
 ```{r}
-pre_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/preservation_correction_database.rds"))
-print(pre_dat)
+#pre_dat <- readRDS(url("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/preservation_correction#_database.rds"))
+#print(pre_dat)
 ```
 
 The metadata for the preservation correction database is:

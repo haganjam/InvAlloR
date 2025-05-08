@@ -1,7 +1,6 @@
 ---
 title: "Dry biomass of freshwater invertebrates using InvTraitR"
 output: rmarkdown::html_vignette
-author: "James Hagan"
 vignette: >
   %\VignetteIndexEntry{Dry biomass of freshwater invertebrates using InvTraitR}
   %\VignetteEngine{knitr::rmarkdown}
@@ -16,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(InvTraitR)
+library(InvAlloR)
 ```
 
 ```{r}
@@ -32,7 +31,7 @@ To see how we can use *InvTraitR* to obtain estimates of the dry biomass of fres
 
 ```{r}
 # load the test data
-pond_df <- readr::read_csv("https://raw.githubusercontent.com/haganjam/InvTraitR/main/database/InvTraitR_vignette_data.csv")
+pond_df <- readr::read_csv("InvAlloR-vignette-data.csv")
 head(pond_df)
 
 # how many unique taxa are there?
