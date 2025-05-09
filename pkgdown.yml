@@ -1,0 +1,11 @@
+pandoc: 3.1.1
+pkgdown: 2.1.2
+pkgdown_sha: ~
+articles:
+  InvAlloR-detailed-output-description: InvAlloR-detailed-output-description.html
+  InvAlloR-technical-information: InvAlloR-technical-information.html
+  InvAlloR-user-guide: InvAlloR-user-guide.html
+last_built: 2025-05-09T09:10Z
+urls:
+  reference: https://haganjam.github.io/InvAlloR/reference
+  article: https://haganjam.github.io/InvAlloR/articles
