@@ -1,8 +1,8 @@
 ---
-title: "Dry biomass of freshwater invertebrates using InvTraitR"
+title: "Using InvAlloR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Dry biomass of freshwater invertebrates using InvTraitR}
+  %\VignetteIndexEntry{Using InvAlloR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
