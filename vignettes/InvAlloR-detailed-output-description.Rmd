@@ -4,7 +4,7 @@ output: rmarkdown::html_vignette
 description: |
   Notes on the model forms used in package.
 vignette: >
-  %\VignetteIndexEntry{Detailed description of model output}
+  %\VignetteIndexEntry{Detailed description of the output}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,9 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-### Overview
+## Overview
 
-The *InvTraitR* R-package exports a single function called *get_trait_from_taxon()*. 
+The main function exported from `InvAlloR` is called: `get_trait_from_taxon()`. 
+
 ```{r eval=FALSE}
 get_trait_from_taxon(
     data,                   # data.frame with at least five columns: target taxon, life stage, latitude (dd), longitude (dd) and body size (mm) if trait == "equation"
@@ -34,10 +35,11 @@ get_trait_from_taxon(
 )
 ```
 
-This generates a relatively complex output and this vignette gives a detailed description of the different outputs. The output of *get_trait_from_taxon()* is a list with two data.frames as named elements: "data" and "decision_data". We start with the columns in the "data" element:
+This generates a relatively complex output and this vignette gives a detailed description of the different outputs. The output of `get_trait_from_taxon()` is a list with two data.frames as named elements: `data` and `decision_data`.
 
+### `data` element
 
-### *workflow1* and *workflow2*
+#### *workflow1* and *workflow2*
 
 + row [int] - variable specifying the row number from the original, input data.frame
 
@@ -51,7 +53,7 @@ This generates a relatively complex output and this vignette gives a detailed de
 
 + ecoregion [chr] - ecoregion based on Abell et al.'s (2008) freshwater ecoregion map (https://www.feow.org/)
 
-+ clean_"taxon name variable" [chr] - target taxon name after checking for typos and the inclusion of atypical characters which is done using *bdc_clean_names()* from the *bdc* R-package. The variable name is the taxon name variable from the original, input data with the "clean_" prefix
++ clean_"taxon name variable" [chr] - target taxon name after checking for typos and the inclusion of atypical characters which is done using `bdc_clean_names()` from the `bdc` R-package. The variable name is the taxon name variable from the original, input data with the "clean_" prefix
 
 + db [chr] - taxonomic database (gbif - https://www.gbif.org/, itis - https://www.itis.gov/ or col - https://www.catalogueoflife.org/)
 
@@ -65,11 +67,11 @@ This generates a relatively complex output and this vignette gives a detailed de
 
 + taxon_family [chr] - family of the scientificName in the one of the taxonomic databases (see db column)
 
-+ trait_out [chr] - specifies the trait that is being queried. The current version of *InvTraitR* only supports "equation" but future updates may include other traits.
++ trait_out [chr] - specifies the trait that is being queried. The current version of `InvAlloR` only supports "equation" but future updates may include other traits.
 
 + db_scientificName [chr] - scientific name of the taxon associated with the equation in the equation data based on one of the taxonomic databases (see db column)
 
-+ id [num] - unique id associated with the trait datapoint in the trait databases. The current version of *InvTraitR* only supports equations and so this id corresponds to a unique id of each of the more than 350 equations in the equation database.
++ id [num] - unique id associated with the trait datapoint in the trait databases. The current version of `InvAlloR` only supports equations and so this id corresponds to a unique id of each of the more than 350 equations in the equation database.
 
 + tax_distance [num] - taxonomic distance between the *scientificName* of the taxon from the original input data and the *db_scientificName* of the taxon from the equation database based on one of the taxonomic databases (see db column)
 
@@ -107,13 +109,13 @@ lm_correction_type [chr] - the specific correction factor used for "model1" equa
 
 dry_biomass_scale [num] - multiplier to convert the equation output to mg
 
-
-### *workflow2*:
+#### *workflow2* only:
 
 dry_biomass_mg [num] - dry biomass (mg) derived for the body size given in the original, input data using the chosen equation
 
+### `decision_data` element
 
-For the "decision_data" element, much of the output is the same. Specifically, the following columns have the same variables and, therefore, we do not repeat the explanations. These variables are:
+For the `decision_data` element, much of the output is the same. Specifically, the following columns have the same variables and, therefore, we do not repeat the explanations. These variables are:
 
 + row [int]
 + (input column names)
@@ -144,9 +146,9 @@ For the "decision_data" element, much of the output is the same. Specifically, t
 
 There are, however, three additional columns:
 
-+ recommend [logi] - TRUE/FALSE whether *InvTraitR* recommends this equation. The recommendation is based on the taxonomic distance, the target body size compared to the body size range that the equation was generated with and whether the life-stage of the target and the equation match. If FALSE, an explanation for why it is not recommended is given in the next column.
++ recommend [logi] - TRUE/FALSE whether `InvAlloR` recommends this equation. The recommendation is based on the taxonomic distance, the target body size compared to the body size range that the equation was generated with and whether the life-stage of the target and the equation match. If FALSE, an explanation for why it is not recommended is given in the next column.
 
 + explanation [chr] - explanation for why a given equation is not recommended
 
-+ workflow2_choice [logi] - TRUE/FALSE whether *InvTraitR* would select this equation using *workflow2* 
++ workflow2_choice [logi] - TRUE/FALSE whether `InvAlloR` would select this equation using `workflow2` 
 
