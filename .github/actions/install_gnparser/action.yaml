@@ -1,0 +1,24 @@
+name: 'Install GNparser'
+description: 'installs GNparser'
+inputs: {}
+outputs: {}
+runs:
+  using: "composite"
+  steps:
+    - name: Install GNparser
+      shell: bash
+      run: |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+            wget https://github.com/gnames/gnparser/releases/download/v1.11.6/gnparser-v1.11.6-linux-x86.tar.gz
+            tar xvf gnparser-v1.11.6-linux-x86.tar.gz
+            unlink gnparser-v1.11.6-linux-x86.tar.gz
+            mv gnparser /usr/local/bin/
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+            brew tap gnames/gn && brew install gnparser
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+            echo "$RUNNER_OS not yet supported"
+            exit 1
+        else
+            echo "$RUNNER_OS not yet supported"
+            exit 1
+        fi

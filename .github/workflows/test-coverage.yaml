@@ -21,12 +21,7 @@ jobs:
       - name: Install OS packages
         run: |
           sudo apt install -y libgdal-dev libudunits2-dev
-      - name: Install GNparser
-        run: |
-          wget https://github.com/gnames/gnparser/releases/download/v1.11.6/gnparser-v1.11.6-linux-x86.tar.gz
-          tar xvf gnparser-v1.11.6-linux-x86.tar.gz
-          unlink gnparser-v1.11.6-linux-x86.tar.gz
-          mv gnparser /usr/local/bin/
+      - uses: ./.github/install_gnparser
       - uses: r-lib/actions/setup-renv@v2
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
