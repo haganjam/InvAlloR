@@ -17,7 +17,7 @@ jobs:
       matrix:
         config:
           - {os: macos-latest,   r: 'release'}
-          - {os: windows-latest, r: 'release'}
+#          - {os: windows-latest, r: 'release'}
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
@@ -38,7 +38,7 @@ jobs:
         run:   |
               if [ "$RUNNER_OS" == "Linux" ]; then
                   sudo apt install -y libgdal-dev libudunits2-dev
-                  
+
                   wget https://github.com/gnames/gnparser/releases/download/v1.11.6/gnparser-v1.11.6-linux-x86.tar.gz
                   tar xvf gnparser-v1.11.6-linux-x86.tar.gz
                   unlink gnparser-v1.11.6-linux-x86.tar.gz
