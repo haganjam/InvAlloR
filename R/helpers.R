@@ -73,7 +73,7 @@ update_user_db <- function() {
 #'  chosen by rappdirs. Will download DB files for the current
 #'  package version (tag) if it can be determined and is available
 #'  or from pkgname otherwise.
-#' @param filename name of this package
+#' @param pkgname name of this package
 download_database <- function(pkgname) {
     pkg_version <- utils::packageVersion(pkgname)
     local_db_dir <- file.path(
