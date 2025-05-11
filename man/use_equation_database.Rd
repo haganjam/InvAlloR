@@ -27,6 +27,11 @@ dry biomass using species- or trait-specific allometric models.
 \examples{
 \dontrun{
 data <- tibble::tibble(equation_id = c(3, 5, 6), body_size = c(0.5, 0.3, 0.2))
-result <- predict_dry_biomass(data, body_size_var = "body_size", equation_id_var = "equation_id", trait = "leaf")
+result <- predict_dry_biomass(
+ data, 
+ body_size_var = "body_size", 
+ equation_id_var = "equation_id", 
+ trait = "leaf"
+)
 }
 }

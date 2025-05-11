@@ -38,8 +38,10 @@ jobs:
         run:   |
               if [ "$RUNNER_OS" == "Linux" ]; then
                   sudo apt install -y libgdal-dev libudunits2-dev
+                  
                   wget https://github.com/gnames/gnparser/releases/download/v1.11.6/gnparser-v1.11.6-linux-x86.tar.gz
                   tar xvf gnparser-v1.11.6-linux-x86.tar.gz
+                  unlink gnparser-v1.11.6-linux-x86.tar.gz
                   mv gnparser /usr/local/bin/
               elif [ "$RUNNER_OS" == "macOS" ]; then
                   brew install pkg-config

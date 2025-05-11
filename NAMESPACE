@@ -2,6 +2,7 @@
 
 export(get_trait_from_taxon)
 export(use_equation_database)
+export(view_equation_database)
 importFrom(assertthat,are_equal)
 importFrom(assertthat,assert_that)
 importFrom(assertthat,is.number)

@@ -5,9 +5,8 @@
 #' @author James G. Hagan (james_hagan(at)outlook.com)
 #' @return tibble with chosen traits or equations based on the input parameters
 #' @export
-#' @importFrom dplyr
+#' @importFrom dplyr tibble
 view_equation_database <- function() {
-
   # load the trait database
   if (!exists(paste0(trait, "_db"))) {
     assign(
@@ -17,5 +16,4 @@ view_equation_database <- function() {
   }
 
   return(dplyr::tibble(equation_db))
-
 }

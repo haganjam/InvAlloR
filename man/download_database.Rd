@@ -6,9 +6,12 @@
 \usage{
 download_database(pkgname)
 }
+\arguments{
+\item{filename}{name of this package}
+}
 \description{
 Will setup the local database in a directory
 chosen by rappdirs. Will download DB files for the current
 package version (tag) if it can be determined and is available
-or from mainline otherwise.
+or from pkgname otherwise.
 }
