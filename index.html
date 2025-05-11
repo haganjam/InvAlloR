@@ -64,11 +64,18 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can try to install it from GitHub, but as it’s a WIP, it <a href="https://github.com/haganjam/InvAlloR/issues/27" class="external-link">may or may not work</a> depending on the tides, temperature, the color of your socks and what you had for dinner the day before yesterday.</p>
+<p>You can install InvAlloR from GitHub.</p>
 <p>To date, we transitively depend on <a href="https://github.com/rspatial/terra" class="external-link">terra</a>, which may require additional installation steps (GDAL) on your OS. Please see the corresponding install section of their README first.</p>
-<p>In addition, if you’re using Windows, you may also need to <a href="https://github.com/gnames/gnparser" class="external-link">GNparser</a>. The package relies on using the <a href="https://brunobrr.github.io/bdc/" class="external-link">bdc</a> package and this uses GNparser. You can follow the installation instructions <a href="https://rdrr.io/github/brunobrr/bdc/f/vignettes/help/installing_gnparser.Rmd" class="external-link">here</a>.</p>
-<p>Now, if you installed terra and GNparser and if you feel lucky, try:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<p>You may also need <a href="https://github.com/gnames/gnparser" class="external-link">GNparser</a>, which is a transitive dependency of <a href="https://brunobrr.github.io/bdc/" class="external-link">bdc</a>.</p>
+<p>You should follow the installation instructions <a href="https://rdrr.io/github/brunobrr/bdc/f/vignettes/help/installing_gnparser.Rmd" class="external-link">here</a>.</p>
+<blockquote>
+<p>We used GNparser <a href="https://github.com/gnames/gnparser/releases/tag/v1.11.6" class="external-link">v1.11.6</a>.</p>
+</blockquote>
+<pre class="shell"><code>wget https://github.com/gnames/gnparser/releases/download/v1.11.6/gnparser-v1.11.6-linux-x86.tar.gz
+tar xvf gnparser-v1.11.6-linux-x86.tar.gz
+mv gnparser /usr/local/bin/</code></pre>
+<p>Now that you’ve installed <code>terra</code> and <code>GNparser</code> and if you feel lucky, try:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install_github</span><span class="op">(</span><span class="st">"haganjam/InvAlloR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
