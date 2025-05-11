@@ -18,6 +18,7 @@ FROM rocker/r-ver:4.5.0@sha256:abc186e22ef825ca8dd24dca60b50bff06ffc9578908f2963
 RUN apt update \
     && apt install -y --no-install-recommends \
         libgdal-dev \
+        gdal-bin \
         libudunits2-dev \
         cmake \
         pandoc \
