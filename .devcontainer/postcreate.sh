@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -euo pipefail
 
 R -q -e 'install.packages("languageserver", repos="https://cran.r-project.org/")'
