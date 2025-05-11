@@ -7,7 +7,7 @@
 download_database(pkgname)
 }
 \arguments{
-\item{filename}{name of this package}
+\item{pkgname}{name of this package}
 }
 \description{
 Will setup the local database in a directory
