@@ -1,7 +1,7 @@
 # InvAlloR
 
 Pipeline to assign body length-dry biomass allometry equations to a taxonomic name based
-on taxonomic hierarchy in freshwater invertebrates. 
+on taxonomic hierarchy in freshwater invertebrates. Package website is: [here](https://haganjam.github.io/InvAlloR/).
 
 > [!WARNING]
 > 

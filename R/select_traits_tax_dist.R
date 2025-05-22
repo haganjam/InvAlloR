@@ -136,7 +136,7 @@ select_traits_tax_dist <- function(data,
   new_cols <- c("db_scientificName", "id", "tax_distance", "body_size_range_match",
                 "life_stage_match", "r2_match", "n", "db_min_body_size_mm", "db_max_body_size_mm",
                 "realm_match", "major_habitat_type_match", "ecoregion_match",
-                "recommend", "explanation", "workflow2_choice")
+                "recommend", "explanation", "best_fit_choice")
   for(i in 1:length(new_cols)) {
     data[[new_cols[i]]] <- NA
   }
@@ -522,13 +522,13 @@ select_traits_tax_dist <- function(data,
           })
 
         # choose the best one equation
-        input[["workflow2_choice"]] <-
+        input[["best_fit_choice"]] <-
           dplyr::near(add_score,
                       max(add_score[min_td], na.rm = TRUE)) & min_td
 
       } else {
 
-        input[["workflow2_choice"]] <- min_td
+        input[["best_fit_choice"]] <- min_td
 
       }
 
@@ -549,7 +549,7 @@ select_traits_tax_dist <- function(data,
         }
 
       # if both of those are true then it is a workflow choice
-      input[["workflow2_choice"]] <- (add_score == 2)
+      input[["best_fit_choice"]] <- (add_score == 2)
 
       input
 

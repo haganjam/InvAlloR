@@ -7,8 +7,8 @@
 #' @export
 #' @importFrom dplyr tibble
 view_equation_database <- function() {
-  # load the trait database
-  if (!exists(paste0(trait, "_db"))) {
+  # load the equation database
+  if (!exists(paste0("equation", "_db"))) {
     assign(
       "equation_db",
       readRDS(file = get_db_file_path(paste0("equation", "_database.rds")))
