@@ -16,23 +16,7 @@ knitr::opts_chunk$set(
 
 ## Installing `InvAlloR`
 
-You can install `InvAlloR` from GitHub. However, currently, we transitively depend on [terra](https://github.com/rspatial/terra), which may require additional installation steps (GDAL) on your OS. We recommend consulting the install section of their README before proceeding.
-
-In addition, you may also need [GNparser](https://github.com/gnames/gnparser), which is currently a transitive dependency of [bdc](https://brunobrr.github.io/bdc/) which we rely on for cleaning the taxonomic names. To download [GNparser](https://github.com/gnames/gnparser), you can follow the installation instructions [here](https://rdrr.io/github/brunobrr/bdc/f/vignettes/help/installing_gnparser.Rmd).
-
-For reference, we used We used GNparser [v1.11.6](https://github.com/gnames/gnparser/releases/tag/v1.11.6).
-
-```shell
-wget https://github.com/gnames/gnparser/releases/download/v1.11.6/gnparser-v1.11.6-linux-x86.tar.gz
-tar xvf gnparser-v1.11.6-linux-x86.tar.gz
-mv gnparser /usr/local/bin/
-```
-Once you have installed `terra` and `GNparser`, you can use the following code to install the package:
-
-```{r setup}
-# install the package from github
-devtools::install_github("haganjam/InvAlloR")
-```
+Please follow the installation instructions in the package [README](https://github.com/haganjam/InvAlloR) or on the package [website](https://haganjam.github.io/InvAlloR/) before continuing.
 
 ## Using `InvAlloR`
 
