@@ -31,7 +31,7 @@ test_that("given a bad workflow,
       data.frame(),
       "tax", "larva", "lat", "lon", "size", "unsupported"
     ),
-    ".*workflow.*"
+    "formula_by_taxon|best_fit"
   )
 })
 
@@ -139,8 +139,8 @@ test_that("does the get_trait_from_taxon() function output the correct
 
 test_that("test a highly marginal case where
             there are no matches for the life-stages", {
-              
-    x <- 
+
+    x <-
       data.frame(
         taxon_name = c("Gammarus", "Daphnia"),
         Life_stage = c("larva", "none"),
@@ -148,8 +148,8 @@ test_that("test a highly marginal case where
         lon = rep(4.98, 1),
         body_size_mm = rnorm(2, 10, 2)
       )
-                
-  y <- 
+
+  y <-
     get_trait_from_taxon(
       data = x,
       target_taxon = "taxon_name",
@@ -161,13 +161,13 @@ test_that("test a highly marginal case where
       trait = "equation",
       gen_sp_dist = 0.5
     )
-  
-  expect_true(all(y[["decision_data"]][["workflow2_choice"]] == FALSE))
-  
+
+  expect_true(all(y[["decision_data"]][["best_fit_choice"]] == FALSE))
+
 })
 
 test_that("test the case where there are only special names", {
-  
+
   x <- data.frame(
     taxon_name = c("Oligochaeta", "Oligochaeta", "Turbellaria"),
     Life_stage = c("none", "none", "none"),
@@ -189,14 +189,14 @@ test_that("test the case where there are only special names", {
   )
 
   expect_equal(x[["taxon_name"]], y[["data"]][["taxon_name"]])
-  
+
 })
 
 # test if the decision df matches the output df
 test_that("does the decision data match the output data", {
-            
+
   x <- make_test_input()
-            
+
   y <- get_trait_from_taxon(
     data = x,
     target_taxon = "taxon_name",
@@ -208,12 +208,12 @@ test_that("does the decision data match the output data", {
     trait = "equation",
     gen_sp_dist = 0.5
   )
-  
+
   # get the samples for which equations were given
   u <- dplyr::filter(y[["data"]], !is.na(dry_biomass_mg))
-  z <- dplyr::filter(y[["decision_data"]], workflow2_choice == TRUE)
-  
+  z <- dplyr::filter(y[["decision_data"]], best_fit_choice == TRUE)
+
   expect_true(all(unique(u$taxon_name) == unique(z$taxon_name)))
-            
+
 })
 

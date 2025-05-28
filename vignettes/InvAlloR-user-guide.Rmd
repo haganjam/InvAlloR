@@ -63,7 +63,7 @@ get_trait_from_taxon(
     latitude_dd,            # character string with the column name containing the latitude in decimal degrees
     longitude_dd,           # character string with the column name containing the longitude in decimal degrees
     body_size,              # character string with the column name containing the body size data if trait = "equation"
-    workflow = "workflow2", # options are "workflow1" or "workflow2" (default = "workflow2)
+    workflow = "best_fit", # options are "formula_by_taxon" or "best_fit" (default = "best_fit")
     max_tax_dist = 3,       # maximum taxonomic distance acceptable between the target and the taxa in the database (default = 3)
     trait = "equation",     # trait to be searched for (default = "equation")
     gen_sp_dist = 0.5       # taxonomic distance between a genus and a species(default = 0.5)
@@ -120,10 +120,10 @@ print(dplyr::filter(ponds_equ1$data, row == 1))
 
 In this output, we have several rows for each input row (these are labelled with the row column i.e. input row 1 is labelled as '1' in the row column). For each row from the input data, there are several rows in this output data. These different rows correspond to different equations from the database that are within the maximum taxonomic distance that we set (i.e. 3.5).
 
-The idea with `formula_by_taxon` is for us to now use our discretion to choose appropriate equations. To look in more detail at the output, we can also use the `View()` function:
+The idea with `formula_by_taxon` is for us to now use our discretion to choose appropriate equations.
 
 ```{r eval=FALSE}
-View(dplyr::filter(ponds_equ1$data, row == 1))
+dplyr::filter(ponds_equ1$data, row == 1)
 ```
 
 The most important columns to consider are the `tax_distance` column, the `body_size_range_match` column and the `life_stage_match` column to make an initial decision. We want low taxonomic distances, we want the length of our target data to be within the body size range of the equation in the database (which is specified by the `body_size_range_match` column) and, very importantly, we want to the life-stage of our target to match the life-stage of the equation. There is only one equation that matches the life-stage (id = 169). Given that the target taxon (*Acilius sulcatus*) is a beetle, life-stage is crucially important (beetles are *holometabolous* and therefore undergo metamorphosis). The problem, however, with id = 169 is that the body size range does not match. Indeed, the equation was developed for body sizes between 1.4 and 5.2 mm (`db_min_body_size_mm` and `db_min_body_size_mm` columns) and the length in our data is 16.3 mm. Thus, using this equation would be a considerable extrapolation. Given the non-linearity of many allometric equations, this may be a problem.
@@ -214,7 +214,7 @@ Indeed, if we look at the whole output, many of the rows do not have equations w
 
 ```{r eval=FALSE}
 # check the equations chosen
-View(ponds_equ2$data)
+ponds_equ2$data
 ```
 
 In fact, in this dataset, `InvAlloR` was only able to find equations for 25 % of the data points and 29 % of the unique taxa.
@@ -240,7 +240,7 @@ If we want to get more insight into why `InvAlloR` was unable to find appropriat
 
 ```{r eval=FALSE}
 # check the decision_data
-View(ponds_equ2$decision_data)
+ponds_equ2$decision_data
 ```
 
 However, in this case, we specified certain levels of maximum taxonomic distance in the function. What happens if we relax this and increase the acceptable maximum taxonomic distance and increase it to 4 (instead of 3.5)?
@@ -287,7 +287,7 @@ This vignette was designed to give an overview of the how `InvAlloR` works. The 
 
 ```{r}
 # view the equation database for reference
-View(view_equation_database())
+view_equation_database()
 ```
 
 

@@ -11,7 +11,7 @@ get_trait_from_taxon(
   latitude_dd,
   longitude_dd,
   body_size,
-  workflow = "workflow2",
+  workflow = "best_fit",
   max_tax_dist = 3,
   trait = "equation",
   gen_sp_dist = 0.5
@@ -50,8 +50,8 @@ body size data if trait = "equation"
 }}
 
 \item{workflow}{\itemize{
-\item options are "workflow1" or "workflow2"
-(default = "workflow2)
+\item options are "formula_by_taxon" or "best_fit"
+(default = "best_fit")
 }}
 
 \item{max_tax_dist}{\itemize{

@@ -24,7 +24,7 @@ make_test_input <- function() {
       "Gammarus", "Daphnia", NA, "Triops",
       "Simocephalus vetulus", NA, NA
     ),
-    taxonRank = c("Genus", "Genus", NA, "Genus", 
+    taxonRank = c("Genus", "Genus", NA, "Genus",
                   "Species", NA, NA),
     acceptedNameUsageID = c(
       "GBIF:2218440", "GBIF:2234785", NA,
@@ -142,18 +142,18 @@ test_that("test if select_traits_tax_dist() the column
 
   # extract names from each element of the output list
   expect_true( all(names(x) == c(
-      c("row", "taxon_name", "Life_stage", "lat", "lon", "length_mm", 
-        "clean_taxon_name", "db", "scientificName", "taxonRank", 
-        "acceptedNameUsageID", "taxon_order", "taxon_family", 
-        "habitat_id", "realm", "major_habitat_type", "ecoregion", 
-        "trait_out", "db_scientificName", "id", "tax_distance", 
-        "body_size_range_match", "life_stage_match", "r2_match", "n", 
-        "db_min_body_size_mm", "db_max_body_size_mm", "realm_match", 
-        "major_habitat_type_match", "ecoregion_match", "recommend", 
-        "explanation", "workflow2_choice")
-    )) 
+      c("row", "taxon_name", "Life_stage", "lat", "lon", "length_mm",
+        "clean_taxon_name", "db", "scientificName", "taxonRank",
+        "acceptedNameUsageID", "taxon_order", "taxon_family",
+        "habitat_id", "realm", "major_habitat_type", "ecoregion",
+        "trait_out", "db_scientificName", "id", "tax_distance",
+        "body_size_range_match", "life_stage_match", "r2_match", "n",
+        "db_min_body_size_mm", "db_max_body_size_mm", "realm_match",
+        "major_habitat_type_match", "ecoregion_match", "recommend",
+        "explanation", "best_fit_choice")
+    ))
     )
-  
+
 })
 
 test_that("test if select_traits_tax_dist() outputs entries that should
@@ -166,14 +166,14 @@ test_that("test if select_traits_tax_dist() outputs entries that should
     life_stage = "Life_stage",
     body_size = "length_mm"
   )
-  
+
   # extract unique expected names
-  y <- 
+  y <-
     x |>
     dplyr::group_by(row) |>
     dplyr::summarise(scientificName = unique(scientificName)) |>
     dplyr::pull(scientificName)
-  
+
   # set the correct answers
   z <- c(
     "Gammarus",
@@ -184,7 +184,7 @@ test_that("test if select_traits_tax_dist() outputs entries that should
     NA,
     NA
   )
-  
+
   # test if these are equal
   u <- mapply(function(x, y){
     (x == y) | (is.na(x) && is.na(y))
@@ -192,7 +192,7 @@ test_that("test if select_traits_tax_dist() outputs entries that should
 
   # make sure the outputted scientific names are correct
   expect_true(all(u))
-  
+
 })
 
 test_that("test if select_traits_tax_dist() outputs
@@ -206,17 +206,17 @@ test_that("test if select_traits_tax_dist() outputs
   )
 
   # all taxonomic distances should be numeric or NA
-  expect_true( 
+  expect_true(
     all( is.numeric(x[["tax_distance"]]) | is.na(x[["tax_distance"]]) )
     )
-  
+
 })
 
 test_that("test if select_traits_tax_dist() works
             correctly with only special names", {
-              
-  x <- make_test_input()   
-  
+
+  x <- make_test_input()
+
   # run the select_traits_tax_dist() function with only special names
   y1 <- select_traits_tax_dist(
     data = x[c(6, 7), ],
@@ -237,16 +237,16 @@ test_that("test if select_traits_tax_dist() works
   spec <- y1[, names(y1) != "row"]
   all <- y2[c(27:30),][, names(y2[c(27:30),]) != "row"]
   z <- (spec == all)
-  
+
   expect_true(all( all(is.na(z) | (z == TRUE)) ))
-  
+
 })
 
 test_that("test if select_traits_tax_dist() works
             correctly without any special names", {
-              
-  x <- make_test_input()             
-  
+
+  x <- make_test_input()
+
   # run the select_traits_tax_dist() function without special names
   y1 <- select_traits_tax_dist(
     data = x[-c(6, 7), ],
@@ -267,8 +267,8 @@ test_that("test if select_traits_tax_dist() works
   spec <- y1[, names(y1) != "row"]
   all <- y2[-c(27:30),][, names(y2[-c(27:30),]) != "row"]
   z <- (spec == all)
-  
+
   expect_true(all( all(is.na(z) | (z == TRUE)) ))
-  
+
 })
 
